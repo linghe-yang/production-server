@@ -1,0 +1,26 @@
+# 普通运行方式
+java -jar production-server-0.0.1-SNAPSHOT.jar
+# 当前ssh窗口被锁定，可按CTRL + C打断程序运行，或直接关闭窗口，程序退出
+
+# 后台不挂断运行方式
+nohup java -jar production-server-0.0.1-SNAPSHOT.jar &
+nohup 不挂断运行命令,当账户退出或终端关闭时,程序仍然运行
+当用 nohup 命令执行作业时，缺省情况下该作业的所有输出被重定向到nohup.out的文件中，除非另外指定了输出文件。
+
+
+# 后台不挂断且日志输入指定文件且错误输入到标准输出中的运行方式(经常用这条)
+nohup java -jar /root/server/production-server-0.0.1-SNAPSHOT.jar > nohup.out 2>&1 &
+
+
+nohup java -jar /root/server/production-server-0.0.1-SNAPSHOT.jar > nohup.out       #不挂断运行jar，输出结果重定向到当前目录的nouhup.out 文件当中
+2>&1 	#表示将标准错误输出合并到标准输出       
+
+0表示键盘输入，1屏幕输出即标准输出，2表示错误输出。
+其中2>&1表示将错误信息重定向到标准输出
+2>1会将错误信息重定向到文件1里面
+
+
+# 找到进程ID（PID）并使用以下命令杀死进程
+ps aux | grep production-server-0.0.1-SNAPSHOT.jar
+
+kill -9 PID
